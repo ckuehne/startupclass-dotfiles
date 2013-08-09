@@ -2,6 +2,7 @@
 ;; -- JS editing and node REPL ---
 ;; -------------------------------
 
+(require 'nodejs-repl)
 (require 'js-comint)
 (defun whitespace-clean-and-compile ()
   (interactive)

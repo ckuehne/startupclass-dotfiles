@@ -70,6 +70,9 @@
 
 (require 'comint)
 
+;; ckuehne: add nodejs-repl for better looking node-repl and autocompletion
+(require 'nodejs-repl)
+
 (provide 'js-comint)
 
 ;; BSS: modified to use node rather than rhino
@@ -102,6 +105,10 @@ is run).
   (interactive (list (if current-prefix-arg
 			 (read-string "Run js: " inferior-js-program-command)
 			 inferior-js-program-command)))
+
+  ;; ckuehne: start nodejs-repl
+  (if (not (comint-check-proc "*js*"))
+      (save-excursion (nodejs-repl)))
 
   ;; BSS: node and node_emacs echo the command twice, rhino not at all.
   ;; Thus we need different settings here for different modes.  Default is
